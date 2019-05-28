@@ -33,7 +33,7 @@ class Post
 
     public function __construct()
     {
-        $this->created_at = \DateTime();
+//        $this->created_at = \DateTime();
     }
 
     public function getId(): ?int
