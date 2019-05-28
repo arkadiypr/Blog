@@ -13,22 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
-//    /**
-//     * @Route("/post/{id}", name="post")
-//     */
-//    public function index($id, PostRepository $postRepository)
-//    {
-//        $post = $postRepository->find($id);
-//
-//        if (!$post) {
-//            return $this->createNotFoundException('Post № '.$id.' not found.');
-//        }
-//
-//        return $this->render('post/index.html.twig', [
-//            'post' => $post,
-//        ]);
-//    }
-
     /**
      * @Route("/post/{id}", name="post")
      */
@@ -57,17 +41,28 @@ class PostController extends AbstractController
         }
 
         return $this->render('post/new-post.html.twig', [
-            'form' => $form->createView( ),
+            'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/post/{id}/edit", name="post_edit")
      */
-    public function editPost(Post $post)
+    public function editPost(Post $post, Request $request, EntityManagerInterface $entityManager)
     {
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('post', ['id' => $post->getId()]);
+        }
+
         return $this->render('post/edit-post.html.twig', [
             'post' => $post,
+            'form' => $form->createView(),
         ]);
     }
 

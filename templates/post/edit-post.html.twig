@@ -3,6 +3,17 @@
 {% block title %}Редактирование поста{% endblock %}
 {% block body %}
     <h1>Редактирование поста {{ post.title }}</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <div>
+        <a href="{{ path('default') }}"><button class="btn btn-primary">Вернуться на главную</button></a>
+    </div>
 
 {% endblock %}
 
