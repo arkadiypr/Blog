@@ -6,10 +6,10 @@
     <h1>{{ post.title }}</h1>
     <p>{{ post.description }}</p>
     <div>
-        <a href="{{ path('default') }}"><button class="btn btn-primary">Вернуться на главную</button></a>
+        <a href="{{ path('post_edit', {'id': post.id}) }}"><button class="btn btn-primary">Редактировать пост</button></a>
     </div>
     <br>
     <div>
-        <a href="{{ path('post_edit', {'id': post.id}) }}"><button class="btn btn-primary">Редактировать пост</button></a>
+        <a href="{{ path('default') }}"><button class="btn btn-primary">Вернуться на главную</button></a>
     </div>
 {% endblock %}
