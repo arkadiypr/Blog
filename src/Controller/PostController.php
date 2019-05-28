@@ -62,6 +62,16 @@ class PostController extends AbstractController
     }
 
     /**
+     * @Route("/post/{id}/edit", name="post_edit")
+     */
+    public function editPost(Post $post)
+    {
+        return $this->render('post/edit-post.html.twig', [
+            'post' => $post,
+        ]);
+    }
+
+    /**
      * @Route("/new-post/success", name="new_post_success")
      */
     public function success()
