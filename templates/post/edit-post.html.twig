@@ -12,7 +12,7 @@
     </div>
     {{ form_end(form) }}
     <div>
-        <a href="{{ path('default') }}"><button class="btn btn-primary">Вернуться на главную</button></a>
+        <a href="{{ path('post',{'id': post.id}) }}"><button class="btn btn-primary">Вернуться к просмотру</button></a>
     </div>
 
 {% endblock %}
