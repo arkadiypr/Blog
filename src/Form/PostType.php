@@ -12,7 +12,6 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('created_at')
             ->add('title', null, [
                 'label' => 'Заголовок',
                 'attr' => [
