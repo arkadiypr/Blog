@@ -14,7 +14,8 @@ class DefaultController extends AbstractController
      */
     public function index(PostRepository $postRepository)
     {
-        $posts = $postRepository->findAll();
+
+        $posts = $postRepository->findBy([], ['created_at' => 'DESC'], 3);
 
         return $this->render('default/index.html.twig', [
             'posts' => $posts,

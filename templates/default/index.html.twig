@@ -9,7 +9,7 @@
     {% for post in posts %}
         <p>{{ post.createdAt | date('Y-m-d, h:i:s') }}</p>
         <h2>{{ post.title }}</h2>
-        <p>{{ post.description }}</p>
+        <p>{{ post.description | truncate(20, true)}}</p>
         <a href="{{ path('post',{'id': post.id}) }}">Читать далее...</a>
         <hr>
     {% endfor %}
